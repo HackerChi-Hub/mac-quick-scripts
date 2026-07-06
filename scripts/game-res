@@ -72,7 +72,8 @@ hotcorners() {
   fi
   # 幂等:左上角已是目标值则跳过 (避免重复 killall Dock 闪烁)
   local cur_tl; cur_tl=$(defaults read com.apple.dock wvous-tl-corner 2>/dev/null || echo "?")
-  if [ "$cur_tl" = "$tl" ]; thenn    printf "${Y}  • 热区已是目标状态，跳过${N}\n"
+  if [ "$cur_tl" = "$tl" ]; then
+    printf "${Y}  • 热区已是目标状态，跳过${N}\n"
     return 0
   fi
   defaults write com.apple.dock wvous-tl-corner -int $tl
